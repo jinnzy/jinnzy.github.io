@@ -432,7 +432,7 @@ hiddenFromSearch: true
 {{</* friend name="Dillon" url="https://github.com/dillonzq/" logo="https://avatars0.githubusercontent.com/u/30786232?s=460&u=5fc878f67c869ce6628cf65121b8d73e1733f941&v=4" word="LoveIt主题作者" */>}}
 ```
 
-这里的friend是引用上个步骤中创建的`friend shortcodes`
+这里的`friend` 是引用上个步骤中创建的`friend shortcodes`
 
 ## 菜单中添加友链
 
@@ -456,6 +456,58 @@ hiddenFromSearch: true
 
 ![](https://jinnzy.oss-cn-beijing.aliyuncs.com/img/20210102223525.png)
 
+# 添加不蒜子，展示网站访问人数
+
+
+
+这里的操作都在`jinnzy.github.io.source` 项目内操作
+
+复制`baseof.html` 文件
+
+```Bash
+ $ mkdir -p ./layouts/_default # 没有目录则创建
+ $ cp themes/LoveIt/layouts/_default/baseof.html layouts/_default/baseof.html 
+```
+
+打开刚复制的`layouts/_default/baseof.html` ，添加`<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>` ，引入不蒜子js文件
+
+```Bash
+{{- partial "init.html" . -}}
+
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    <head>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>
+            {{- block "title" . }}{{ .Site.Title }}{{ end -}}
+        </title>
+
+        {{- partial "head/meta.html" . -}}
+        {{- partial "head/link.html" . -}}
+        {{- partial "head/seo.html" . -}}
+    </head>
+    ... 
+```
+
+打开`config.toml` ，修改以下配置
+
+```Bash
+  [params.footer]
+    enable = true
+    #  自定义内容 (支持 HTML 格式)
+    custom = '<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> • <span id="busuanzi_container_site_uv">访客数<span id="busuanzi_value_site_uv"></span>人次</span>'
+```
+
+最终效果：
+
+![](https://jinnzy.oss-cn-beijing.aliyuncs.com/img/20210104211747.png)
+
+由于是本地测试，域名都是localhost所以显示这么大的量是正常的，发布后使用真实域名数量就会显示正常
+
 # Reference
 
 [https://lewky.cn/tags/hugo/](https://lewky.cn/tags/hugo/)
@@ -465,3 +517,5 @@ hiddenFromSearch: true
 [kkkgo/hugo-friendlinks友链](https://github.com/kkkgo/hugo-friendlinks)
 
 [loveit自定义样式](https://hugoloveit.com/zh-cn/theme-documentation-basics/#33-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F)
+
+[不蒜子](http://ibruce.info/2015/04/04/busuanzi/)
