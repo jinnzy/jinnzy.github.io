@@ -1,0 +1,280 @@
+<!doctype html><html lang=zh-cn><head><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>使用buildx构建多平台镜像 - jinnzy 的博客</title><meta name=Description content="jinnzy 的博客"><meta property="og:title" content="使用buildx构建多平台镜像"><meta property="og:description" content="构建多平台镜像的几种方法 QEMU仿真 使用qemu 仿真出很多平台，buildx集成了该特性，可以实现在其他平台构建不需要修改dockerfil"><meta property="og:type" content="article"><meta property="og:url" content="http://jinnzy.github.io/docker-buildx/"><meta property="og:image" content="http://jinnzy.github.io/logo.jpg"><meta property="article:published_time" content="2021-01-07T22:55:40+08:00"><meta property="article:modified_time" content="2021-01-07T22:58:17+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://jinnzy.github.io/logo.jpg"><meta name=twitter:title content="使用buildx构建多平台镜像"><meta name=twitter:description content="构建多平台镜像的几种方法 QEMU仿真 使用qemu 仿真出很多平台，buildx集成了该特性，可以实现在其他平台构建不需要修改dockerfil"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=canonical href=http://jinnzy.github.io/docker-buildx/><link rel=prev href=http://jinnzy.github.io/hugo-blog/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用buildx构建多平台镜像","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/jinnzy.github.io\/docker-buildx\/"},"genre":"posts","keywords":"buildx, docker","wordcount":1603,"url":"http:\/\/jinnzy.github.io\/docker-buildx\/","datePublished":"2021-01-07T22:55:40+08:00","dateModified":"2021-01-07T22:58:17+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"jinnzy"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="jinnzy 的博客">jinnzy</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/friends/>友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop><input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="jinnzy 的博客">jinnzy</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/>文章</a><a class=menu-item href=/tags/>标签</a><a class=menu-item href=/categories/>分类</a><a class=menu-item href=/friends/>友链</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">使用buildx构建多平台镜像</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>jinnzy</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/docker/><i class="far fa-folder fa-fw"></i>docker</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-01-07>2021-01-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1603 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#构建多平台镜像的几种方法>构建多平台镜像的几种方法</a><ul><li><a href=#qemu仿真>QEMU仿真</a></li><li><a href=#使用不同节点来构建>使用不同节点来构建</a></li><li><a href=#交叉编译>交叉编译</a></li></ul></li><li><a href=#使用buildx构建>使用buildx构建</a><ul><li><a href=#开启docker-buildx>开启docker buildx</a></li><li><a href=#开启binfmt_misc>开启<code>binfmt_misc</code></a></li><li><a href=#创建builder>创建builder</a></li><li><a href=#构建多平台镜像>构建多平台镜像</a></li></ul></li><li><a href=#遇到的错误>遇到的错误</a><ul><li><a href=#上传镜像时x509-certificate-signed-by-unknown-authority>上传镜像时x509: certificate signed by unknown authority</a></li></ul></li><li><a href=#参考链接>参考链接</a></li></ul></nav></div></div><div class=content id=content><h1 id=构建多平台镜像的几种方法>构建多平台镜像的几种方法</h1><h2 id=qemu仿真>QEMU仿真</h2><blockquote><p>使用<code>qemu</code> 仿真出很多平台，<code>buildx</code>集成了该特性，可以实现在其他平台构建不需要修改<code>dockerfile</code> ，当它需要对不同的架构运行一个二进制文件时，它会自己从binfmt_misc 处理器中已经注册的架构去加载对应的二进制文件。当然，我们需要手动在<code>binfmt_misc</code>处理器里去注册我们想要的架构的。</p></blockquote><p>本篇文章主要介绍使用该方法来实现多平台镜像构建。</p><h2 id=使用不同节点来构建>使用不同节点来构建</h2><p>这种方式性能较好，但是并未选择这种方式，如果想深入了解，可以参考其他资料。</p><p>官方例子：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ docker buildx create --use --name mybuild node-amd64
+mybuild
+$ docker buildx create --append --name mybuild node-arm64
+$ docker buildx build --platform linux/amd64,linux/arm64 .
+</code></pre></td></tr></table></div></div><h2 id=交叉编译>交叉编译</h2><p>如果开发语言对交叉编译支持较好，可以使用<code>dockerfiles</code>的多阶段构建，可以构建时传入<code>BUILDPLATFORM</code> 和<code>TARGETPLATFORM</code> 参数选择运行的平台及编译的平台。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>FROM --platform<span class=o>=</span><span class=nv>$BUILDPLATFORM</span> golang:alpine AS build
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+RUN <span class=nb>echo</span> <span class=s2>&#34;I am running on </span><span class=nv>$BUILDPLATFORM</span><span class=s2>, building for </span><span class=nv>$TARGETPLATFORM</span><span class=s2>&#34;</span> &gt; /log
+FROM alpine
+COPY --from<span class=o>=</span>build /log /log
+</code></pre></td></tr></table></div></div><h1 id=使用buildx构建>使用buildx构建</h1><h2 id=开启docker-buildx>开启docker buildx</h2><p>开启docker buildx插件，要求版本不低于<code>19.03</code></p><p>第一种方法临时开启：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ <span class=nb>export</span> <span class=nv>DOCKER_CLI_EXPERIMENTAL</span><span class=o>=</span>enabled
+
+</code></pre></td></tr></table></div></div><p>第二种方法：在<code>config.json</code> 中开启<code>"experimental": "enabled"</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ vim ~/.docker/config.json
+<span class=o>{</span>
+  ...
+  <span class=s2>&#34;experimental&#34;</span>: <span class=s2>&#34;enabled&#34;</span>
+<span class=o>}</span>
+ 
+</code></pre></td></tr></table></div></div><p>验证</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ docker buildx version 
+github.com/docker/buildx v0.3.1-tp-docker 6db68d029599c6710a32aa7adcba8e5a344795a7
+
+
+</code></pre></td></tr></table></div></div><h2 id=开启binfmt_misc>开启<code>binfmt_misc</code></h2><blockquote><p>如果使用的是docker desktop默认是已经启用<code>binfmt_misc</code>的了
+内核版本最好大于3.x，我这里用的是5.x的内核。</p></blockquote><p>这里使用<code>docker/binfmt</code> 开启特权模式启用<code>binfmt_misc</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>docker run --privileged --rm docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
+</code></pre></td></tr></table></div></div><p>检查是否开启成功</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ ls -l /proc/sys/fs/binfmt_misc/
+total <span class=m>0</span>
+-rw-r--r--. <span class=m>1</span> root root <span class=m>0</span> Jan  <span class=m>7</span> 17:41 jexec
+-rw-r--r--. <span class=m>1</span> root root <span class=m>0</span> Jan  <span class=m>7</span> 17:43 qemu-aarch64
+-rw-r--r--. <span class=m>1</span> root root <span class=m>0</span> Jan  <span class=m>7</span> 17:43 qemu-arm
+-rw-r--r--. <span class=m>1</span> root root <span class=m>0</span> Jan  <span class=m>7</span> 17:43 qemu-ppc64le
+-rw-r--r--. <span class=m>1</span> root root <span class=m>0</span> Jan  <span class=m>7</span> 17:43 qemu-riscv64
+-rw-r--r--. <span class=m>1</span> root root <span class=m>0</span> Jan  <span class=m>7</span> 17:43 qemu-s390x
+--w-------. <span class=m>1</span> root root <span class=m>0</span> Jan  <span class=m>7</span> 17:41 register
+-rw-r--r--. <span class=m>1</span> root root <span class=m>0</span> Jan  <span class=m>7</span> 17:41 status
+ 
+</code></pre></td></tr></table></div></div><p>检查是否启用处理器</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ grep -r <span class=s2>&#34;enabled&#34;</span> /proc/sys/fs/binfmt_misc/ 
+/proc/sys/fs/binfmt_misc/qemu-riscv64:enabled
+/proc/sys/fs/binfmt_misc/qemu-s390x:enabled
+/proc/sys/fs/binfmt_misc/qemu-ppc64le:enabled
+/proc/sys/fs/binfmt_misc/qemu-arm:enabled
+/proc/sys/fs/binfmt_misc/qemu-aarch64:enabled
+/proc/sys/fs/binfmt_misc/jexec:enabled
+grep: /proc/sys/fs/binfmt_misc/register: Invalid argument
+/proc/sys/fs/binfmt_misc/status:enabled
+</code></pre></td></tr></table></div></div><h2 id=创建builder>创建builder</h2><p>需要创建一个新的docker builder，名称叫<code>builder</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ docker buildx create --name builder --use
+builder
+$ docker buildx ls
+NAME/NODE      DRIVER/ENDPOINT             STATUS   PLATFORMS
+builder    docker-container                     
+  builder0 unix:///var/run/docker.sock inactive 
+default *      docker                               
+  default      default                     running  linux/amd64, linux/386
+
+</code></pre></td></tr></table></div></div><p>这时可以看到一个默认builder和我们新建的一个builder，目前新建的builder还处于inactive的状态。</p><p>通过如下方式启动新的builder。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ docker buildx inspect builder --bootstrap
+<span class=o>[</span>+<span class=o>]</span> Building 63.8s <span class=o>(</span>1/1<span class=o>)</span> <span class=nv>FINISHED</span>                                                                                                                                                
+ <span class=o>=</span>&gt; <span class=o>[</span>internal<span class=o>]</span> booting buildkit                                                                                                                                            63.8s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; pulling image moby/buildkit:buildx-stable-1                                                                                                                         61.9s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; creating container buildx_buildkit_builder0                                                                                                                      1.9s
+Name:   builder
+Driver: docker-container
+
+Nodes:
+Name:      builder0
+Endpoint:  unix:///var/run/docker.sock
+Status:    running
+Platforms: linux/amd64, linux/arm64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6
+
+
+</code></pre></td></tr></table></div></div><h2 id=构建多平台镜像>构建多平台镜像</h2><p>当前目录结构：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ tree  
+├── Dockerfile
+└── test.go
+
+</code></pre></td></tr></table></div></div><p>Dockerfile:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>FROM golang:1.15-alpine AS builder
+WORKDIR /opt
+RUN go build -o <span class=nb>test</span> .
+
+FROM alpine
+WORKDIR /opt
+COPY --from<span class=o>=</span>builder /opt/test .
+CMD <span class=o>[</span><span class=s2>&#34;./test&#34;</span><span class=o>]</span>
+
+</code></pre></td></tr></table></div></div><p>test.go</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Go data-lang=Go><span class=kn>package</span> <span class=nx>main</span>
+
+<span class=kn>import</span> <span class=p>(</span>
+        <span class=s>&#34;fmt&#34;</span>
+<span class=p>)</span>
+
+<span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+  <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;test&#34;</span><span class=p>)</span>
+<span class=p>}</span>
+
+</code></pre></td></tr></table></div></div><p>开始构建并上传，注意<code>harbor</code> 版本要在<code>2.0</code> 以上才支持。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ docker buildx build -t reg.xxxxxx.cn/app/test-golang:v1 --platform<span class=o>=</span>linux/arm64,linux/amd64 . 
+
+<span class=o>[</span>+<span class=o>]</span> Building 5.2s <span class=o>(</span>22/22<span class=o>)</span> <span class=nv>FINISHED</span>                                                                                                                                               
+ <span class=o>=</span>&gt; <span class=o>[</span>internal<span class=o>]</span> load build definition from Dockerfile                                                                                                                        0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; transferring dockerfile: 92B                                                                                                                                         0.0s
+ <span class=o>=</span>&gt; <span class=o>[</span>internal<span class=o>]</span> load .dockerignore                                                                                                                                           0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; transferring context: 2B                                                                                                                                             0.0s
+ <span class=o>=</span>&gt; <span class=o>[</span>linux/amd64 internal<span class=o>]</span> load metadata <span class=k>for</span> docker.io/library/alpine:latest                                                                                                2.3s
+ <span class=o>=</span>&gt; <span class=o>[</span>linux/amd64 internal<span class=o>]</span> load metadata <span class=k>for</span> docker.io/library/golang:1.15-alpine                                                                                           2.0s
+ <span class=o>=</span>&gt; <span class=o>[</span>linux/arm64 internal<span class=o>]</span> load metadata <span class=k>for</span> docker.io/library/alpine:latest                                                                                                3.1s
+ <span class=o>=</span>&gt; <span class=o>[</span>linux/arm64 internal<span class=o>]</span> load metadata <span class=k>for</span> docker.io/library/golang:1.15-alpine                                                                                           2.1s
+ <span class=o>=</span>&gt; <span class=o>[</span>linux/amd64 builder 1/4<span class=o>]</span> FROM docker.io/library/golang:1.15-alpine@sha256:49b4eac11640066bc72c74b70202478b7d431c7d8918e0973d6e4aeb8b3129d2                             0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; resolve docker.io/library/golang:1.15-alpine@sha256:49b4eac11640066bc72c74b70202478b7d431c7d8918e0973d6e4aeb8b3129d2                                                 0.0s
+ <span class=o>=</span>&gt; <span class=o>[</span>linux/arm64 stage-1 1/3<span class=o>]</span> FROM docker.io/library/alpine@sha256:3c7497bf0c7af93428242d6176e8f7905f2201d8fc5861f45be7a346b5f23436                                         0.1s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; resolve docker.io/library/alpine@sha256:3c7497bf0c7af93428242d6176e8f7905f2201d8fc5861f45be7a346b5f23436                                                             1.8s
+ <span class=o>=</span>&gt; <span class=o>[</span>linux/arm64 builder 1/4<span class=o>]</span> FROM docker.io/library/golang:1.15-alpine@sha256:49b4eac11640066bc72c74b70202478b7d431c7d8918e0973d6e4aeb8b3129d2                             0.1s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; resolve docker.io/library/golang:1.15-alpine@sha256:49b4eac11640066bc72c74b70202478b7d431c7d8918e0973d6e4aeb8b3129d2                                                 0.0s
+ <span class=o>=</span>&gt; <span class=o>[</span>linux/amd64 stage-1 1/3<span class=o>]</span> FROM docker.io/library/alpine@sha256:3c7497bf0c7af93428242d6176e8f7905f2201d8fc5861f45be7a346b5f23436                                         0.1s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; resolve docker.io/library/alpine@sha256:3c7497bf0c7af93428242d6176e8f7905f2201d8fc5861f45be7a346b5f23436                                                             0.0s
+ <span class=o>=</span>&gt; <span class=o>[</span>internal<span class=o>]</span> load build context                                                                                                                                           0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; transferring context: 178B                                                                                                                                           0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/amd64 stage-1 2/3<span class=o>]</span> WORKDIR /opt                                                                                                                           0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/amd64 builder 2/4<span class=o>]</span> WORKDIR /opt                                                                                                                           0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/amd64 builder 3/4<span class=o>]</span> ADD . /opt/                                                                                                                            0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/amd64 builder 4/4<span class=o>]</span> RUN go build -o <span class=nb>test</span> .                                                                                                                 0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/amd64 stage-1 3/3<span class=o>]</span> COPY --from<span class=o>=</span>builder /opt/test .                                                                                                        0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/arm64 stage-1 2/3<span class=o>]</span> WORKDIR /opt                                                                                                                           0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/arm64 builder 2/4<span class=o>]</span> WORKDIR /opt                                                                                                                           0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/arm64 builder 3/4<span class=o>]</span> ADD . /opt/                                                                                                                            0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/arm64 builder 4/4<span class=o>]</span> RUN go build -o <span class=nb>test</span> .                                                                                                                 0.0s
+ <span class=o>=</span>&gt; CACHED <span class=o>[</span>linux/arm64 stage-1 3/3<span class=o>]</span> COPY --from<span class=o>=</span>builder /opt/test .                                                                                                        0.0s
+ <span class=o>=</span>&gt; exporting to image                                                                                                                                                      1.8s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; exporting layers                                                                                                                                                     0.6s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; exporting manifest sha256:714e4f18895bb698c65392eda3b39e35b38df0e84c34ce1f604bfa8fdb466a77                                                                           0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; exporting config sha256:0339ab69edd09e4038046c8c056305733f050918725b6f265780189c0bdd76e3                                                                             0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; exporting manifest sha256:a5c4695278c99a1801c557e68145d7a1e61fa82288a9d2b43b1f85219dea5b8a                                                                           0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; exporting config sha256:a69d7dfa854e466d743d09c3c95ebca68f2feb6cb335bc0aecc4a256cc95e68f                                                                             0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; exporting manifest list sha256:77677ebebf2dda103c6cd8598018a1d9bb79e06102173588fef5c501e81f6cb3                                                                      0.0s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; pushing layers                                                                                                                                                       0.5s
+ <span class=o>=</span>&gt; <span class=o>=</span>&gt; pushing manifest <span class=k>for</span> reg.xxxxxx.cn/app/test-golang:v1  
+
+</code></pre></td></tr></table></div></div><h1 id=遇到的错误>遇到的错误</h1><h2 id=上传镜像时x509-certificate-signed-by-unknown-authority>上传镜像时x509: certificate signed by unknown authority</h2><p>完整报错：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>failed to solve: rpc error: <span class=nv>code</span> <span class=o>=</span> Unknown <span class=nv>desc</span> <span class=o>=</span> failed to <span class=k>do</span> request: Head <span class=o>[</span>https://reg.xxxxxx.cn/v2/app/test-golang/blobs/sha256:0c1f186a05c7a4d0cb23b4a339473c5e96115be11f4deb24f74d3f2324120c87:<span class=o>](</span>https://reg.xxxxxx.cn/v2/app/test-golang/blobs/sha256:0c1f186a05c7a4d0cb23b4a339473c5e96115be11f4deb24f74d3f2324120c87:<span class=o>)</span> x509: certificate signed by unknown authority
+</code></pre></td></tr></table></div></div><p>这是因为公司所用的harbor证书是自签名证书，暂时的解决方法是将harbor证书加到builder容器中。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-Bash data-lang=Bash>$ <span class=nv>BUILDER</span><span class=o>=</span><span class=k>$(</span>docker ps <span class=p>|</span> grep buildkitd  <span class=p>|</span> awk <span class=s1>&#39;{print $1}&#39;</span><span class=k>)</span>
+$ docker cp ./harbor.crt <span class=nv>$BUILDER</span>:/usr/local/share/ca-certificates/ <span class=c1># harbor.crt为harbor ca证书</span>
+$ sudo docker <span class=nb>exec</span> <span class=nv>$BUILDER</span> update-ca-certificates
+$ sudo docker restart <span class=nv>$BUILDER</span> 
+</code></pre></td></tr></table></div></div><p>重新上传镜像即可。</p><h1 id=参考链接>参考链接</h1><p><a href=https://docs.docker.com/buildx/working-with-buildx/ target=_blank rel="noopener noreffer">https://docs.docker.com/buildx/working-with-buildx/</a></p><p><a href=https://zhuanlan.zhihu.com/p/227048978 target=_blank rel="noopener noreffer">https://zhuanlan.zhihu.com/p/227048978</a></p><p><a href=https://github.com/docker/buildx/issues/80 target=_blank rel="noopener noreffer">https://github.com/docker/buildx/issues/80</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2021-01-07&nbsp;<a class=git-hash href=jinnzy.github.io.source/commit/facbaa8c0a90e57c22b5c77392c0c8c62c6278ce target=_blank title="commit by jinzhy(839444083@qq.com) facbaa8c0a90e57c22b5c77392c0c8c62c6278ce: 添加buildx">
+<i class="fas fa-hashtag fa-fw"></i>facbaa8</a></span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/docker-buildx/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=http://jinnzy.github.io/docker-buildx/ data-title=使用buildx构建多平台镜像 data-hashtags=buildx,docker><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=http://jinnzy.github.io/docker-buildx/ data-hashtag=buildx><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 WhatsApp" data-sharer=whatsapp data-url=http://jinnzy.github.io/docker-buildx/ data-title=使用buildx构建多平台镜像 data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=http://jinnzy.github.io/docker-buildx/ data-title=使用buildx构建多平台镜像><i data-svg-src=/lib/simple-icons/icons/line.min.svg></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=http://jinnzy.github.io/docker-buildx/ data-title=使用buildx构建多平台镜像><i class="fab fa-weibo fa-fw"></i></a><a href=javascript:void(0); title="分享到 Myspace" data-sharer=myspace data-url=http://jinnzy.github.io/docker-buildx/ data-title=使用buildx构建多平台镜像 data-description><i data-svg-src=/lib/simple-icons/icons/myspace.min.svg></i></a><a href=javascript:void(0); title="分享到 Blogger" data-sharer=blogger data-url=http://jinnzy.github.io/docker-buildx/ data-title=使用buildx构建多平台镜像 data-description><i class="fab fa-blogger fa-fw"></i></a><a href=javascript:void(0); title="分享到 Evernote" data-sharer=evernote data-url=http://jinnzy.github.io/docker-buildx/ data-title=使用buildx构建多平台镜像><i class="fab fa-evernote fa-fw"></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/buildx/>buildx</a>,&nbsp;<a href=/tags/docker/>docker</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/hugo-blog/ class=prev rel=prev title=使用hugo来搭建个人博客><i class="fas fa-angle-left fa-fw"></i>使用hugo来搭建个人博客</a></div></div><div id=comments></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><span id=busuanzi_container_site_pv>本站总访问量<span id=busuanzi_value_site_pv></span>次</span> • <span id=busuanzi_container_site_uv>访客数<span id=busuanzi_value_site_uv></span>人次</span></div><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i>LoveIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>jinnzy</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i></a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/katex/copy-tex.min.css><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript src=/lib/sharer/sharer.min.js></script><script type=text/javascript src=/lib/katex/katex.min.js></script><script type=text/javascript src=/lib/katex/auto-render.min.js></script><script type=text/javascript src=/lib/katex/copy-tex.min.js></script><script type=text/javascript src=/lib/katex/mhchem.min.js></script><script type=text/javascript src=/lib/cookieconsent/cookieconsent.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
