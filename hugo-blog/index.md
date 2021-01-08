@@ -508,7 +508,38 @@ hiddenFromSearch: true
 
 由于是本地测试，域名都是localhost所以显示这么大的量是正常的，发布后使用真实域名数量就会显示正常
 
-# Reference
+# 使用valine作为评论系统
+
+登录或注册[leancloud](http://leancloud.cn)，点击左上角创建应用。
+
+![](https://jinnzy.oss-cn-beijing.aliyuncs.com/img/20210108223348.png)
+
+创建好之后，进入应用，选择`设置` >`应用Keys`，获取`AppID` 和`App Key` 。
+
+![](https://jinnzy.oss-cn-beijing.aliyuncs.com/img/20210108223641.png)
+
+打开项目根目录下的`config.toml`，填入上个步骤获取的`AppID` 和`App Key`。
+
+```Bash
+    [params.page.comment]
+      enable = true
+      [params.page.comment.valine]
+        enable = true
+        appId = "xxxxx"
+        appKey = "xxxxx"
+```
+
+运行项目进行测试，设置变量为`production` 环境，默认是`dev` 不显示评论等系统。
+
+```Bash
+$ hugo server  --environment production
+```
+
+进入文章，看最底部已经有评论出现了。
+
+![](https://jinnzy.oss-cn-beijing.aliyuncs.com/img/20210108224008.png)
+
+# 参考资料
 
 [https://lewky.cn/tags/hugo/](https://lewky.cn/tags/hugo/)
 
@@ -519,3 +550,5 @@ hiddenFromSearch: true
 [loveit自定义样式](https://hugoloveit.com/zh-cn/theme-documentation-basics/#33-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F)
 
 [不蒜子](http://ibruce.info/2015/04/04/busuanzi/)
+
+[https://valine.js.org/quickstart.html](https://valine.js.org/quickstart.html)
