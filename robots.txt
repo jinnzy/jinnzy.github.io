@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /tags/
+
+Disallow: /archives/
+Disallow: /categories/
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: http://jinnzy.github.io/sitemap.xml
+Sitemap: http://jinnzy.github.io/baidusitemap.xml
