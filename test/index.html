@@ -1,0 +1,538 @@
+<!doctype html><html lang=zh-cn><head><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>test - jinnzy 的博客</title><meta name=Description content="jinnzy 的博客"><meta property="og:title" content="test"><meta property="og:description" content="hugo初体验 安装hugo 下载链接 我这里选择的最新版本v0.80.0，选择操作系统对应的版本即可。 下载后将hugo.exe加入到环境变量中，"><meta property="og:type" content="article"><meta property="og:url" content="http://jinnzy.github.io/test/"><meta property="og:image" content="http://jinnzy.github.io/logo.jpg"><meta property="article:published_time" content="2021-01-01T20:20:48+08:00"><meta property="article:modified_time" content="2021-01-27T22:36:22+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://jinnzy.github.io/logo.jpg"><meta name=twitter:title content="test"><meta name=twitter:description content="hugo初体验 安装hugo 下载链接 我这里选择的最新版本v0.80.0，选择操作系统对应的版本即可。 下载后将hugo.exe加入到环境变量中，"><meta name=application-name content="jinnzy 的博客"><meta name=apple-mobile-web-app-title content="jinnzy 的博客"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=canonical href=http://jinnzy.github.io/test/><link rel=prev href=http://jinnzy.github.io/hugo-blog/><link rel=next href=http://jinnzy.github.io/docker-buildx/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"test","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/jinnzy.github.io\/test\/"},"genre":"posts","keywords":"hugo","wordcount":3820,"url":"http:\/\/jinnzy.github.io\/test\/","datePublished":"2021-01-01T20:20:48+08:00","dateModified":"2021-01-27T22:36:22+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"jinnzy"},"description":""}</script></head><body header-desktop=fixed header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':('auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark'))&&document.body.setAttribute('theme','dark');</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="jinnzy 的博客">jinnzy</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/friends/>友链 </a><a class=menu-item href=/about/>关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop><input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="jinnzy 的博客">jinnzy</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/>文章</a><a class=menu-item href=/tags/>标签</a><a class=menu-item href=/categories/>分类</a><a class=menu-item href=/friends/>友链</a><a class=menu-item href=/about/>关于</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">test</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>jinnzy</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/hugo/><i class="far fa-folder fa-fw"></i>hugo</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-01-01>2021-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3820 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id=/test/ class=leancloud_visitors data-flag-title=test>
+<i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+</span>&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#hugo初体验>hugo初体验</a><ul><li><a href=#安装hugo>安装hugo</a></li><li><a href=#创建一个hugo项目>创建一个hugo项目</a></li><li><a href=#安装主题>安装主题</a></li><li><a href=#修改配置>修改配置</a></li><li><a href=#修改文章默认的模板>修改文章默认的模板</a></li><li><a href=#创建第一篇文章>创建第一篇文章</a></li></ul></li><li><a href=#利用github-pages部署blog>利用github pages部署blog</a><ul><li><a href=#创建github仓库>创建github仓库</a></li><li><a href=#配置github-ssh-key>配置github ssh key</a></li><li><a href=#配置github-actions>配置github actions</a></li><li><a href=#上传hugo项目传到github>上传hugo项目传到github</a></li></ul></li><li><a href=#console报错找不到sitewebmanifest>Console报错找不到<code>/site.webmanifest</code></a></li><li><a href=#添加友链>添加友链</a><ul><li><a href=#添加友链样式>添加友链样式</a></li><li><a href=#创建shortcodes友链文件>创建shortcodes友链文件</a></li><li><a href=#创建friend-md文件>创建friend md文件</a></li></ul></li><li><a href=#友链>友链</a><ul><li><a href=#菜单中添加友链>菜单中添加友链</a></li></ul></li><li><a href=#添加不蒜子展示网站访问人数>添加不蒜子，展示网站访问人数</a></li><li><a href=#使用valine作为评论系统>使用valine作为评论系统</a></li><li><a href=#使用自定义域名>使用自定义域名</a></li><li><a href=#参考资料>参考资料</a></li></ul></nav></div></div><div class=content id=content><h1 id=hugo初体验>hugo初体验</h1><h2 id=安装hugo>安装hugo</h2><p><a href=https://github.com/gohugoio/hugo/releases target=_blank rel="noopener noreffer">下载链接</a></p><p>我这里选择的最新版本<code>v0.80.0</code>，选择操作系统对应的版本即可。</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/44a4f6838ec4070b6bef9569add668a813b03692.png data-srcset="/img/44a4f6838ec4070b6bef9569add668a813b03692.png, /img/44a4f6838ec4070b6bef9569add668a813b03692.png 1.5x, /img/44a4f6838ec4070b6bef9569add668a813b03692.png 2x" data-sizes=auto alt=/img/44a4f6838ec4070b6bef9569add668a813b03692.png title=44a4f6838ec4070b6bef9569add668a813b03692.png></p><p>下载后将hugo.exe加入到环境变量中，我是习惯创建一个bin目录，将可执行文件都放到这里。</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/a3c926447582ce4f2a117fc4b724b41f01d99b7b.png data-srcset="/img/a3c926447582ce4f2a117fc4b724b41f01d99b7b.png, /img/a3c926447582ce4f2a117fc4b724b41f01d99b7b.png 1.5x, /img/a3c926447582ce4f2a117fc4b724b41f01d99b7b.png 2x" data-sizes=auto alt=/img/a3c926447582ce4f2a117fc4b724b41f01d99b7b.png title=a3c926447582ce4f2a117fc4b724b41f01d99b7b.png></p><blockquote><p>ps 下载的时候发现链接竟然打不开了，可以通过添加hosts解决</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback># github
+199.232.96.133 avatars0.githubusercontent.com
+199.232.96.133 avatars1.githubusercontent.com
+199.232.96.133 avatars2.githubusercontent.com
+199.232.96.133 avatars3.githubusercontent.com
+199.232.96.133 avatars4.githubusercontent.com
+199.232.96.133 avatars5.githubusercontent.com
+199.232.96.133 avatars6.githubusercontent.com
+199.232.96.133 avatars7.githubusercontent.com
+199.232.96.133 avatars8.githubusercontent.com
+199.232.96.133  user-images.githubusercontent.com
+</code></pre></td></tr></table></div></div><h2 id=创建一个hugo项目>创建一个hugo项目</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ hugo.exe new site jinnzy.github.io.source
+</code></pre></td></tr></table></div></div><h2 id=安装主题>安装主题</h2><p>这里有两种方法我采用的第一种方法，比较方便，有什么问题可以直接修改。</p><p>第一种：下载最新的压缩包或直接clone到themes目录</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ cd jinnzy.github.io.source
+
+$ git clone https://github.com/dillonzq/LoveIt.git themes/LoveIt
+</code></pre></td></tr></table></div></div><p>第二种：使用子模块来安装</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ cd jinnzy.github.io.source
+$ git init
+$ git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
+</code></pre></td></tr></table></div></div><h2 id=修改配置>修改配置</h2><p>位置：<code>./config.toml</code></p><p>可以参考<a href=https://hugoloveit.com/zh-cn/theme-documentation-basics/ target=_blank rel="noopener noreffer">官方文档中3.1的示例配置</a>，由于太大这里就不贴出来了</p><p>在这个基础上我额外修改了以下几个配置，其余的就是一些网站标题描述等的就不多说了。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback># 是否使用 git 信息
+enableGitInfo = true
+
+[params] 
+  gitRepo = &#34;jinnzy.github.io.source&#34;
+
+[markup]
+   # 目录设置
+  [markup.tableOfContents]
+    # 从1个#开始算标题，默认是两个#开始算标题
+    startLevel = 1
+    endLevel = 6
+</code></pre></td></tr></table></div></div><h2 id=修改文章默认的模板>修改文章默认的模板</h2><p>位置：<code>./archetypes/default.md</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>---
+title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34;
+date: {{ .Date }}
+draft: false
+toc: true
+tags: 
+- &#34;&#34;
+categories:
+- &#34;&#34;
+---
+</code></pre></td></tr></table></div></div><p>加入了目录标签和分类等。</p><h2 id=创建第一篇文章>创建第一篇文章</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ hugo new posts/hugo-blog-1.md
+</code></pre></td></tr></table></div></div><p>启动进行测试，会报错</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ hugo server -D
+···
+Error: Error building site: failed to render pages: render of &#34;page&#34; failed: execute of template failed: template: posts/single.html:92:124: executing &#34;content&#34; at &lt;partial &#34;function/content.html&#34;&gt;: error calling partial: &#34;/Users/tc/Documents/workspace_2020/blog/themes/loveIt/layouts/partials/function/content.html:15:15&#34;: execute of template failed: template: partials/function/content.html:15:15: executing &#34;partials/function/content.html&#34; at &lt;partial &#34;function/checkbox.html&#34; $content&gt;: error calling partial: partial that returns a value needs a non-zero argument.
+</code></pre></td></tr></table></div></div><blockquote><p>-D不加也可以，因为前面已经设置 draft: false 了。</p></blockquote><p>这里报错是一个bug，已经有人<a href=https://github.com/dillonzq/LoveIt/issues/518 target=_blank rel="noopener noreffer">pr</a>但是并未合并进来，所以要自己手动修改一下。</p><p>修改文件：<code>themes/loveIt/layouts/partials/function/content.html</code></p><p>修改后如下</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>{{- $content := .Content -}}
+
+{{- if ne &#34;&#34; $content -}}
+
+{{- if .Ruby -}}
+    {{- $content = partial &#34;function/ruby.html&#34; $content -}}
+{{- end -}}
+
+{{- if .Fraction -}}
+    {{- $content = partial &#34;function/fraction.html&#34; $content -}}
+{{- end -}}
+
+{{- if .Fontawesome -}}
+    {{- $content = partial &#34;function/fontawesome.html&#34; $content -}}
+{{- end -}}
+
+{{- $content = partial &#34;function/checkbox.html&#34; $content -}}
+
+{{- $content = partial &#34;function/escape.html&#34; $content -}}
+
+{{- end -}}
+
+{{- return $content -}}
+</code></pre></td></tr></table></div></div><p>随后再次启动，进入<code>[http://localhost:1313](http://localhost:1313/)</code> 就可以看到博客首页了。</p><h1 id=利用github-pages部署blog>利用github pages部署blog</h1><p>前置条件：需要安装<code>git</code></p><h2 id=创建github仓库>创建github仓库</h2><p>登录github创建库</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/e5b48455358c7336ffb70961b29c6d91eaa83321.png data-srcset="/img/e5b48455358c7336ffb70961b29c6d91eaa83321.png, /img/e5b48455358c7336ffb70961b29c6d91eaa83321.png 1.5x, /img/e5b48455358c7336ffb70961b29c6d91eaa83321.png 2x" data-sizes=auto alt=/img/e5b48455358c7336ffb70961b29c6d91eaa83321.png title=e5b48455358c7336ffb70961b29c6d91eaa83321.png><img class=lazyload src=/svg/loading.min.svg data-src=/img/97ffa113f9b91a2732465bc48721b01fbfecffc2.png data-srcset="/img/97ffa113f9b91a2732465bc48721b01fbfecffc2.png, /img/97ffa113f9b91a2732465bc48721b01fbfecffc2.png 1.5x, /img/97ffa113f9b91a2732465bc48721b01fbfecffc2.png 2x" data-sizes=auto alt=/img/97ffa113f9b91a2732465bc48721b01fbfecffc2.png title=97ffa113f9b91a2732465bc48721b01fbfecffc2.png></p><p>我这里是创建了两个库</p><ul><li><code>jinnzy.github.io.source</code> 选择的是私有库(Private)存放hugo源文件，利用github actions来编译生成静态文件推送到<code>jinnzy.github.io</code>库中</li><li><code>jinnzy.github.io</code> 选择的是公共库(Public)存放hugo编译后的静态页面，主要是通过github pages功能访问这些静态文件。</li></ul><h2 id=配置github-ssh-key>配置github ssh key</h2><p>生成ssk key</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ ssh-keygen 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+53:0e:0b:0f:c0:b8:d3:4f:e1:8a:a8:5d:8c:8f:98:cf jinzhy@vlnx107005.firstshare.cn
+The key&#39;s randomart image is:
++--[ RSA 2048]----+
+|   o.            |
+|  . ...          |
+|   o .o.. .      |
+|  o . o+ =       |
+| . = +  S .      |
+|. o + .  .       |
+|.+ +             |
+|+.o .            |
+| .E              |
++-----------------+
+</code></pre></td></tr></table></div></div><ul><li><code>/root/.ssh/id_rsa</code> 私钥</li><li><code>/root/.ssh/id_rsa.pub</code> 公钥</li></ul><p>打开<code>jinnzy.github.io.source</code> 库添加<code>Secrets</code> ，名称为<code>ACTIONS_DEPLOY_KEY</code>，将<code>/root/.ssh/id_rsa</code>的内容复制进去</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/d672e2ec9366b1fec05f22d30b711ecebaee9c95.png data-srcset="/img/d672e2ec9366b1fec05f22d30b711ecebaee9c95.png, /img/d672e2ec9366b1fec05f22d30b711ecebaee9c95.png 1.5x, /img/d672e2ec9366b1fec05f22d30b711ecebaee9c95.png 2x" data-sizes=auto alt=/img/d672e2ec9366b1fec05f22d30b711ecebaee9c95.png title=d672e2ec9366b1fec05f22d30b711ecebaee9c95.png></p><p>打开<code>jinnzy.github.io</code> 库添加<code>Deploy keys</code> ，名称随便都行，将<code>/root/.ssh/id_rsa.pub</code>的内容复制进去。</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/bd007fdecb98f95d0acce8d34400f98263ab5f96.png data-srcset="/img/bd007fdecb98f95d0acce8d34400f98263ab5f96.png, /img/bd007fdecb98f95d0acce8d34400f98263ab5f96.png 1.5x, /img/bd007fdecb98f95d0acce8d34400f98263ab5f96.png 2x" data-sizes=auto alt=/img/bd007fdecb98f95d0acce8d34400f98263ab5f96.png title=bd007fdecb98f95d0acce8d34400f98263ab5f96.png></p><h2 id=配置github-actions>配置github actions</h2><p>打开<code>jinnzy.github.io.source</code>，创建Actions</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/d075160f9f146e87851f2b3e1c347a51a51b1345.png data-srcset="/img/d075160f9f146e87851f2b3e1c347a51a51b1345.png, /img/d075160f9f146e87851f2b3e1c347a51a51b1345.png 1.5x, /img/d075160f9f146e87851f2b3e1c347a51a51b1345.png 2x" data-sizes=auto alt=/img/d075160f9f146e87851f2b3e1c347a51a51b1345.png title=d075160f9f146e87851f2b3e1c347a51a51b1345.png><img class=lazyload src=/svg/loading.min.svg data-src=/img/2a139f178a6379a9d34bc8ec6faa42cc1a7a0143.png data-srcset="/img/2a139f178a6379a9d34bc8ec6faa42cc1a7a0143.png, /img/2a139f178a6379a9d34bc8ec6faa42cc1a7a0143.png 1.5x, /img/2a139f178a6379a9d34bc8ec6faa42cc1a7a0143.png 2x" data-sizes=auto alt=/img/2a139f178a6379a9d34bc8ec6faa42cc1a7a0143.png title=2a139f178a6379a9d34bc8ec6faa42cc1a7a0143.png></p><p>全部内容如下：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>name: Deploy Hugo Site to Github Pages on Main Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: &#39;0.80.0&#39;
+          extended: true # 使用扩展版
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }} # 这里的 ACTIONS_DEPLOY_KEY 则是上面设置 Private Key的变量名
+          external_repository: jinnzy/jinnzy.github.io # Pages 远程仓库 
+          publish_dir: ./public
+          keep_files: false # remove existing files
+          publish_branch: main  # deploying branch
+          commit_message: ${{ github.event.head_commit.message }}
+</code></pre></td></tr></table></div></div><h2 id=上传hugo项目传到github>上传hugo项目传到github</h2><p>当前所在目录：<code>./jinzhy.github.io.source</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ git init
+$ git commit -m &#34;first commit&#34;
+$ git branch -M main
+$ git remote add origin https://github.com/jinnzy/jinzhy.github.io.source.git
+$ git pull # 先把之前提交的的内容拉取下来
+$ git push -u origin main
+</code></pre></td></tr></table></div></div><p>进入<code>Actions</code> 可以看到上传成功了</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/de0d1c4caf2e1909b7384fdb656d32c071b48a47.png data-srcset="/img/de0d1c4caf2e1909b7384fdb656d32c071b48a47.png, /img/de0d1c4caf2e1909b7384fdb656d32c071b48a47.png 1.5x, /img/de0d1c4caf2e1909b7384fdb656d32c071b48a47.png 2x" data-sizes=auto alt=/img/de0d1c4caf2e1909b7384fdb656d32c071b48a47.png title=de0d1c4caf2e1909b7384fdb656d32c071b48a47.png></p><p>打开<code>jinzhy.github.io</code> 项目</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/cc93ff60a75968509c83638bfdf2a553d8f56986.png data-srcset="/img/cc93ff60a75968509c83638bfdf2a553d8f56986.png, /img/cc93ff60a75968509c83638bfdf2a553d8f56986.png 1.5x, /img/cc93ff60a75968509c83638bfdf2a553d8f56986.png 2x" data-sizes=auto alt=/img/cc93ff60a75968509c83638bfdf2a553d8f56986.png title=cc93ff60a75968509c83638bfdf2a553d8f56986.png></p><p>下拉找到<code>GitHub Pages</code> 可以看到发布地址，这时访问<code>https://jinnzy.github.io</code> 就可以看到博客了。</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/291ec9524eef00cea1a8d6684f68afb7b2910f77.png data-srcset="/img/291ec9524eef00cea1a8d6684f68afb7b2910f77.png, /img/291ec9524eef00cea1a8d6684f68afb7b2910f77.png 1.5x, /img/291ec9524eef00cea1a8d6684f68afb7b2910f77.png 2x" data-sizes=auto alt=/img/291ec9524eef00cea1a8d6684f68afb7b2910f77.png title=291ec9524eef00cea1a8d6684f68afb7b2910f77.png></p><h1 id=console报错找不到sitewebmanifest>Console报错找不到<code>/site.webmanifest</code></h1><blockquote><p>引用自lewky.cn博客中的内容。</p></blockquote><p>该文件和<code>Progressive web applications (PWA)</code>有关，通过添加PWA到Hugo站点，可以实现离线访问的功能，也就是说断网状态下依然可以访问到你之前访问过的网页，换言之就是通过PWA来将访问过的网页资源缓存到了本地，所以断网下仍然可以继续访问网站。当然，恢复网络时会自动更新最新的页面资源。</p><p>但是目前该功能还不够完善，可能存在着安全性的问题，并且实现过程也比较繁杂，最终还是决定把这个引用给去掉，做法如下：</p><ul><li>把博客主题目录下的<code>\themes\LoveIt\layouts\partials\head\link.html</code>拷贝到根目录下的<code>\layouts\partials\head\link.html</code></li><li>打开拷贝后的<code>link.html</code>，把<code>&lt;link rel="manifest" href="/site.webmanifest"></code>删掉或者注释掉：</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>{{- /*    &lt;link rel=&#34;manifest&#34; href=&#34;/site.webmanifest&#34;&gt; */ -}}
+</code></pre></td></tr></table></div></div><h1 id=添加友链>添加友链</h1><blockquote><p>注意：参考了Reference中的几篇文章添加友链，发现css样式总是不生效，查了一下午才在这个pr中发现loveit 主题某些功能需要把scss 转换为css 所以要选择扩展版下载，所以又重新下载了hugo_extended_0.80.0_Windows-64bit 这个版本😭。</p></blockquote><p>主要使用<a href=https://github.com/kkkgo/hugo-friendlinks target=_blank rel="noopener noreffer">kkkgo/hugo-friendlinks</a>项目中的代码。</p><h2 id=添加友链样式>添加友链样式</h2><p>位置：<code>jinnzh.github.io.source/assets/css/_custom.scss</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>// friendslink
+.myfriends {
+  text-align: center;
+  background-color: #fff;
+  opacity: 0.9;
+}
+
+.myfriends a {
+  color: black;
+}
+
+.myfriends p {
+  display: none;
+}
+
+.friendurl {
+  text-decoration: none !important;
+  color: black;
+}
+
+.myfriend {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  padding: 2px;
+  box-shadow: 1px 1px 1px rgba(0,0,0, .15);
+  margin-top: -12px !important;
+  margin-left: 10px !important;
+  background-color: #fff;
+}
+
+.frienddiv {
+   position: relative;
+   left: 0; right: 0;
+   width: 100%;
+   height: 70px;
+   line-height: 1.38;
+   margin-top: -5px;
+   margin-bottom: -5px;
+   border-radius: 5px;
+   background: rgba(255, 255, 255, .2);
+   box-shadow: 4px 4px 2px 1px rgba(0, 0, 255, .2);
+   overflow: hidden;
+}
+
+.frienddiv:hover {
+  background: rgba(87, 142, 224, 0.15);
+}
+
+.frienddiv:hover .frienddivleft img {
+  transition: .9s!important;
+  -webkit-transition: .9s!important;
+  -moz-transition: .9s!important;
+  -o-transition: .9s!important;
+  -ms-transition: .9s!important;
+  transform: rotate(360deg)!important;
+  -webkit-transform: rotate(360deg)!important;
+  -moz-transform: rotate(360deg)!important;
+  -o-transform: rotate(360deg)!important;
+  -ms-transform: rotate(360deg)!important;
+}
+
+.frienddivleft {
+  width: 92px;
+  float: left;
+}
+
+.frienddivleft {
+    margin-top: 15px;
+    margin-right: 2px;
+}
+
+.frienddivright {
+  margin-top: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+</code></pre></td></tr></table></div></div><h2 id=创建shortcodes友链文件>创建shortcodes友链文件</h2><p>位置：<code>jinnzh.github.io.source/layouts/shortcodes/friend.html</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>{{ if .IsNamedParams }}
+&lt;p&gt;&lt;a target=&#34;_blank&#34; href={{ .Get &#34;url&#34; }} title={{ .Get &#34;name&#34; }} class=&#34;friendurl&#34;&gt;
+    &lt;div class=&#34;frienddiv&#34;&gt;
+      &lt;div class=&#34;frienddivleft&#34;&gt;
+  &lt;img class=&#34;myfriend&#34; src={{ .Get &#34;logo&#34; }} /&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;frienddivright&#34;&gt;
+  {{ .Get &#34;name&#34; }}&lt;br /&gt;{{ .Get &#34;word&#34; }}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/p&gt;
+{{ end }}
+</code></pre></td></tr></table></div></div><h2 id=创建friend-md文件>创建friend md文件</h2><p>位置：<code>jinnzh.github.io.source/content/friends.md</code></p><hr><hr><h1 id=友链>友链</h1><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>---
+hiddenFromSearch: true
+---
+# 友链
+{{&lt; friend name=&#34;Dillon&#34; url=&#34;https://github.com/dillonzq/&#34; logo=&#34;https://avatars0.githubusercontent.com/u/30786232?s=460&amp;u=5fc878f67c869ce6628cf65121b8d73e1733f941&amp;v=4&#34; word=&#34;LoveIt主题作者&#34; &gt;}}
+</code></pre></td></tr></table></div></div><p>这里的<code>friend</code> 是引用上个步骤中创建的<code>friend shortcodes</code></p><h2 id=菜单中添加友链>菜单中添加友链</h2><p>位置：<code>jinnzh.github.io.source/config.toml</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>[menu]
+  [[menu.main]]
+    identifier = &#34;friends&#34;
+    pre = &#34;&#34;
+    post = &#34;&#34;
+    name = &#34;友链&#34;
+    url = &#34;/friends/&#34;
+    title = &#34;&#34;
+    weight = 4
+</code></pre></td></tr></table></div></div><ul><li>weight按菜单顺序往下排即可。</li></ul><p>最终效果</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/4490d24fdbc990bdf8a894712d02b0f6e635267f.png data-srcset="/img/4490d24fdbc990bdf8a894712d02b0f6e635267f.png, /img/4490d24fdbc990bdf8a894712d02b0f6e635267f.png 1.5x, /img/4490d24fdbc990bdf8a894712d02b0f6e635267f.png 2x" data-sizes=auto alt=/img/4490d24fdbc990bdf8a894712d02b0f6e635267f.png title=4490d24fdbc990bdf8a894712d02b0f6e635267f.png></p><h1 id=添加不蒜子展示网站访问人数>添加不蒜子，展示网站访问人数</h1><p>这里的操作都在<code>jinnzy.github.io.source</code> 项目内操作</p><p>复制<code>baseof.html</code> 文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ mkdir -p ./layouts/_default # 没有目录则创建
+ $ cp themes/LoveIt/layouts/_default/baseof.html layouts/_default/baseof.html
+</code></pre></td></tr></table></div></div><p>打开刚复制的<code>layouts/_default/baseof.html</code> ，添加<code>&lt;script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">&lt;/script></code> ，引入不蒜子js文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>{{- partial &#34;init.html&#34; . -}}
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;{{ .Site.LanguageCode }}&#34;&gt;
+    &lt;head&gt;
+        &lt;script async src=&#34;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&#34;&gt;&lt;/script&gt;
+        &lt;meta charset=&#34;utf-8&#34;&gt;
+        &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1&#34;&gt;
+        &lt;meta name=&#34;robots&#34; content=&#34;noodp&#34; /&gt;
+        &lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=edge, chrome=1&#34;&gt;
+        &lt;title&gt;
+            {{- block &#34;title&#34; . }}{{ .Site.Title }}{{ end -}}
+        &lt;/title&gt;
+
+        {{- partial &#34;head/meta.html&#34; . -}}
+        {{- partial &#34;head/link.html&#34; . -}}
+        {{- partial &#34;head/seo.html&#34; . -}}
+    &lt;/head&gt;
+    ...
+</code></pre></td></tr></table></div></div><p>打开<code>config.toml</code> ，修改以下配置</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>[params.footer]
+    enable = true
+    #  自定义内容 (支持 HTML 格式)
+    custom = &#39;&lt;span id=&#34;busuanzi_container_site_pv&#34;&gt;本站总访问量&lt;span id=&#34;busuanzi_value_site_pv&#34;&gt;&lt;/span&gt;次&lt;/span&gt; • &lt;span id=&#34;busuanzi_container_site_uv&#34;&gt;访客数&lt;span id=&#34;busuanzi_value_site_uv&#34;&gt;&lt;/span&gt;人次&lt;/span&gt;&#39;
+</code></pre></td></tr></table></div></div><p>最终效果：</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/1a884bd3e84446aff124a297756bdb126d11d390.png data-srcset="/img/1a884bd3e84446aff124a297756bdb126d11d390.png, /img/1a884bd3e84446aff124a297756bdb126d11d390.png 1.5x, /img/1a884bd3e84446aff124a297756bdb126d11d390.png 2x" data-sizes=auto alt=/img/1a884bd3e84446aff124a297756bdb126d11d390.png title=1a884bd3e84446aff124a297756bdb126d11d390.png></p><p>由于是本地测试，域名都是localhost所以显示这么大的量是正常的，发布后使用真实域名数量就会显示正常</p><h1 id=使用valine作为评论系统>使用valine作为评论系统</h1><p>登录或注册<a href=http://leancloud.cn/ target=_blank rel="noopener noreffer">leancloud</a>，点击左上角创建应用。</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/b130f5066bee5d0294991d8974658b5bc66a24bd.png data-srcset="/img/b130f5066bee5d0294991d8974658b5bc66a24bd.png, /img/b130f5066bee5d0294991d8974658b5bc66a24bd.png 1.5x, /img/b130f5066bee5d0294991d8974658b5bc66a24bd.png 2x" data-sizes=auto alt=/img/b130f5066bee5d0294991d8974658b5bc66a24bd.png title=b130f5066bee5d0294991d8974658b5bc66a24bd.png></p><p>创建好之后，进入应用，选择<code>设置</code> ><code>应用Keys</code>，获取<code>AppID</code> 和<code>App Key</code> 。</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/d1e6aef786c6a038782a03a34b09152f60402625.png data-srcset="/img/d1e6aef786c6a038782a03a34b09152f60402625.png, /img/d1e6aef786c6a038782a03a34b09152f60402625.png 1.5x, /img/d1e6aef786c6a038782a03a34b09152f60402625.png 2x" data-sizes=auto alt=/img/d1e6aef786c6a038782a03a34b09152f60402625.png title=d1e6aef786c6a038782a03a34b09152f60402625.png></p><p>打开项目根目录下的<code>config.toml</code>，填入上个步骤获取的<code>AppID</code> 和<code>App Key</code>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>[params.page.comment]
+      enable = true
+      [params.page.comment.valine]
+        enable = true
+        appId = &#34;xxxxx&#34;
+        appKey = &#34;xxxxx&#34;
+</code></pre></td></tr></table></div></div><p>运行项目进行测试，设置变量为<code>production</code> 环境，默认是<code>dev</code> 不显示评论等系统。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>$ hugo server  --environment production
+</code></pre></td></tr></table></div></div><p>进入文章，看最底部已经有评论出现了。</p><p><img class=lazyload src=/svg/loading.min.svg data-src=/img/6e3e340a578f5e6d03bce60b0bc461ac9a0eb0bb.png data-srcset="/img/6e3e340a578f5e6d03bce60b0bc461ac9a0eb0bb.png, /img/6e3e340a578f5e6d03bce60b0bc461ac9a0eb0bb.png 1.5x, /img/6e3e340a578f5e6d03bce60b0bc461ac9a0eb0bb.png 2x" data-sizes=auto alt=/img/6e3e340a578f5e6d03bce60b0bc461ac9a0eb0bb.png title=6e3e340a578f5e6d03bce60b0bc461ac9a0eb0bb.png></p><h1 id=使用自定义域名>使用自定义域名</h1><h1 id=参考资料>参考资料</h1><p><a href=https://lewky.cn/tags/hugo/ target=_blank rel="noopener noreffer">https://lewky.cn/tags/hugo/</a></p><p><a href=https://hugoloveit.com/zh-cn/categories/ target=_blank rel="noopener noreffer">https://hugoloveit.com/zh-cn/categories/</a></p><p><a href=https://github.com/kkkgo/hugo-friendlinks target=_blank rel="noopener noreffer">kkkgo/hugo-friendlinks友链</a></p><p><a href=https://hugoloveit.com/zh-cn/theme-documentation-basics/#33-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F target=_blank rel="noopener noreffer">loveit自定义样式</a></p><p><a href=http://ibruce.info/2015/04/04/busuanzi/ target=_blank rel="noopener noreffer">不蒜子</a></p><p><a href=https://valine.js.org/quickstart.html target=_blank rel="noopener noreffer">https://valine.js.org/quickstart.html</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2021-01-27&nbsp;<a class=git-hash href=jinnzy.github.io.source/commit/df86b62df39104682fe19db0274a914c4bc7bd0f target=_blank title="commit by jinnzy(839444083@qq.com) df86b62df39104682fe19db0274a914c4bc7bd0f: add test file">
+<i class="fas fa-hashtag fa-fw"></i>df86b62</a></span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/test/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/hugo/>hugo</a></section><section><span><a href=javascript:void(0); onclick=window.history.back();>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/hugo-blog/ class=prev rel=prev title=使用hugo来搭建个人博客><i class="fas fa-angle-left fa-fw"></i>使用hugo来搭建个人博客</a>
+<a href=/docker-buildx/ class=next rel=next title=使用buildx构建多平台镜像>使用buildx构建多平台镜像<i class="fas fa-angle-right fa-fw"></i></a></div></div><div id=comments><div id=valine class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://valine.js.org/>Valine</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><span id=busuanzi_container_site_pv>本站总访问量<span id=busuanzi_value_site_pv></span>次</span> • <span id=busuanzi_container_site_uv>访客数<span id=busuanzi_value_site_uv></span>人次</span></div><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/dillonzq/LoveIt target=_blank rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i>LoveIt</a></div><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2021</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank>jinnzy</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i></a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><link rel=stylesheet href=/lib/valine/valine.min.css><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/katex/copy-tex.min.css><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script type=text/javascript src=/lib/valine/Valine.min.js></script><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript src=/lib/katex/katex.min.js></script><script type=text/javascript src=/lib/katex/auto-render.min.js></script><script type=text/javascript src=/lib/katex/copy-tex.min.js></script><script type=text/javascript src=/lib/katex/mhchem.min.js></script><script type=text/javascript src=/lib/cookieconsent/cookieconsent.min.js></script><script type=text/javascript>window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"D7o8B5PpKixtgWAKdAKXS7Od-gzGzoHsz","appKey":"pG7gYMpeO2c3PbhFLQhxUKyF","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
