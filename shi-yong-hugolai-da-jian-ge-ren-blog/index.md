@@ -532,3 +532,5 @@ $ hugo server  --environment production
 
 [https://valine.js.org/quickstart.html](https://valine.js.org/quickstart.html)
 
+[推送百度站长](https://github.com/peng4740/push-urls-to-baidu)
+
