@@ -3,7 +3,7 @@
 
 线下测试环境升级k8s集群过了几天后，研发同学报了一个问题，myhuaweicloud.com域名无法访问，之前是可以的。
 
-进入到所在pod内，`ping myhuaweicloud.com`试了下无法解析域名，再`ping baidu.com` 和其他域名是正常的，猜测大概率问题出在了coredns上，随意先把coredns debug日至打开观察一下
+进入到所在pod内，`ping myhuaweicloud.com`试了下无法解析域名，再`ping baidu.com` 和其他域名是正常的，猜测大概率问题出在了coredns上，先把coredns debug日至打开观察一下
 
 ```
 .:53 {
