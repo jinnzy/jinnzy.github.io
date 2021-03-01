@@ -78,11 +78,10 @@ github.com/docker/buildx v0.3.1-tp-docker 6db68d029599c6710a32aa7adcba8e5a344795
 > 如果使用的是docker desktop默认是已经启用binfmt_misc的了
 > 内核版本最好大于3.x，我这里用的是5.x的内核。
 
-这里使用`docker/binfmt` 开启特权模式启用`binfmt_misc`
+这里使用`[docker/binfmt](https://github.com/docker/binfmt)` 开启特权模式启用`binfmt_misc`
 
 ```
 docker run --privileged --rm docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
-
 ```
 
 检查是否开启成功
@@ -203,7 +202,7 @@ func main() {
 开始构建并上传，注意`harbor` 版本要在`2.0` 以上才支持。
 
 ```
-$ docker buildx build -t reg.xxxxxx.cn/app/test-golang:v1 --platform=linux/arm64,linux/amd64 . 
+$ docker buildx build -t reg.xxxxxx.cn/app/test-golang:v1 --platform=linux/arm64,linux/amd64 --push . 
 
 [+] Building 5.2s (22/22) FINISHED                                                                                                                                               
  => [internal] load build definition from Dockerfile                                                                                                                        0.0s
@@ -247,6 +246,27 @@ $ docker buildx build -t reg.xxxxxx.cn/app/test-golang:v1 --platform=linux/arm64
 
 ```
 
+## 开机启动
+
+由于重启后`binfmt_misc` 和`builder` 都会停止，所以要进行一些修改。
+
+`binfmt_misc` 加入开机启动脚本
+
+```bash
+cat >  /etc/rc.d/init.d/enable-binfmt.sh << EOF
+#!/bin/bash
+docker run --privileged --rm docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
+EOF
+```
+
+`builder` 添加`--restart=always`
+
+```bash
+BUILDER=$(docker ps | grep buildkitd  | awk '{print $1}')
+
+docker update --restart=always $BUILDER 
+```
+
 # 遇到的错误
 
 ## 上传镜像时x509: certificate signed by unknown authority
@@ -269,6 +289,30 @@ $ sudo docker restart $BUILDER
 ```
 
 重新上传镜像即可。
+
+## docker: 'buildx' is not a docker command.
+
+开启`buildx`后还是报这个错，查看了下和之前成功安装的环境信息
+
+有问题的：
+
+```bash
+cat /etc/redhat-release 
+CentOS Linux release 7.3.1611 (Core)
+```
+
+正常的：
+
+```bash
+cat /etc/redhat-release 
+CentOS Linux release 7.5.1804 (Core)
+```
+
+发现是linux版本有差异，进行更新后可以正常使用
+
+```bash
+yum update -y
+```
 
 # 参考链接
 
