@@ -183,31 +183,9 @@ cpu.cfs_period_us = 100000 (i.e. 100ms)
 cpu.cfs_quota_us = quota = (cpu in millicores * 100000) / 1000
 ```
 
-- memory 内存资源
-- kubelet默认使用各个资源下的`kubepods.slice`目录，和kubelet配置有关
-- kubelet会在`kubepods.slice` 下面为每个pod创建一个`pod<pod.UID>` 的cgroup值
+# 参考文章
 
-    cpu request值，如果容器未指定limit值，则只设置cpu.shares，如果pod在节点资源空闲时可以无限制使用cpu资源，但是资源不足时至少会保证可以使用到cpu.shares的值
+[https://zhuanlan.zhihu.com/p/38359775](https://zhuanlan.zhihu.com/p/38359775)
 
-```
-pod<UID>/cpu.shares
-```
-
-    cpu limit值
-
-```
-pod<UID>/cpu.cfs_quota_us
-```
-
-    memory limit值
-
-```
-pod<UID>/memory.limit_in_bytes
-```
-
-    # 参考文章
-
-    [https://zhuanlan.zhihu.com/p/38359775](https://zhuanlan.zhihu.com/p/38359775)
-
-    [https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718](https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718)
+[https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718](https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718)
 
