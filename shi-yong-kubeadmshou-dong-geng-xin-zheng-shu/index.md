@@ -1,7 +1,7 @@
 # 使用kubeadm手动更新证书
 
 
-由于线上很多k8s集群的证书要过期了，虽然升级集群会更新证书，但是线上很多专属云k8s集群不方便升级，选择了手动更新证书，这里记录下更新步骤。
+由于线上很多k8s集群的证书要过期了，虽然升级集群会更新证书，但是线上很多专属云k8s集群不方便升级，所以选择了手动更新证书，这里记录下更新步骤。
 
 > 本次操作已在1.18.x/1.17.x版本中验证，如果是高版本需要去掉alpha命令。
 > kubeadm不能管理外部生成的CA证书。
@@ -111,7 +111,7 @@ GM4p3EPT4T/7A9oK1ZMKEvBN4PbtHWQiD3y+txNT0kDl53aQqGs=
 certificate rotation detected, shutting down client connections to start using new credentials
 ```
 
-# 参考资料
+### 参考资料
 
 [https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-certs/](https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-certs/)
 
